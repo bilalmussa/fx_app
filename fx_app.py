@@ -25,12 +25,13 @@ st.sidebar.write('Please select your home currency and receiving currency')
 
 home_curr = ['USD','GBP']
 
-rec_curr = ['INR','CNY']
+rec_curr = ['INR','CNY', 'ZAR']
 
 countries = {'USD':'USA'
              ,'GBP':'GBR'
              ,'INR': 'IND'
              , 'CNY': 'CHN'
+             , 'ZAR': 'ZAF'
              }
 
 params = {
