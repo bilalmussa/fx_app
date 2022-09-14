@@ -105,7 +105,26 @@ wise_data.loc[len(wise_data.index)] = [remitly_data['name'],remitly_data['rate']
 
 wise_data=wise_data.sort_values(by=['receivedAmount'],ascending=False)
 
-AgGrid(wise_data, height=500, fit_columns_on_grid_load=True)
+wise_data['url']= ""
+wise_data.loc[wise_data['name']=='Remitly','url'] = 'https://remitly.tod8mp.net/KebZb7'
 
+def make_clickable(link):
+    # target _blank to open new window
+    # extract clickable text to display for your link
+    text = 'click here'
+    return f'<a target="_blank" href="{link}">{text}</a>'
+
+# link is the column with hyperlinks
+wise_data['url'] = wise_data['url'].apply(make_clickable)
+wise_data = wise_data.to_html(escape=False)
+st.write(wise_data, unsafe_allow_html=True)
+
+#wise_data.style.format({'url': make_clickable})
+
+#AgGrid(wise_data, height=500, fit_columns_on_grid_load=True)
+
+#st.write(wise_data.to_html(escape=False, index=False), unsafe_allow_html=True)
+
+wise_data = pd.read_html(wise_data)[0]
 
 st.write('The best provider is:', wise_data['name'].iloc[0])
