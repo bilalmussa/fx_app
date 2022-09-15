@@ -107,6 +107,7 @@ wise_data=wise_data.sort_values(by=['receivedAmount'],ascending=False)
 
 wise_data['url']= ""
 wise_data.loc[wise_data['name']=='Remitly','url'] = 'https://remitly.tod8mp.net/KebZb7'
+wise_data.loc[wise_data['name']=='Wise','url'] = 'https://wise.prf.hn/l/1Mgvvol'
 
 def make_clickable(link):
     # target _blank to open new window
